@@ -16,32 +16,29 @@
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .app {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  align-items: flex-start;
   gap: 40px;
-  padding: 20px;
+  padding: 50px;
+  max-width: 1200px;
 }
 
-.business-card {
-  display: flex;
-  flex-flow: column;
-  gap: 25px;
-
-}
 .recto, .verso {
   position: relative;
   aspect-ratio: 350/200;
   width: 500px;
   border-radius: 1px;
-  border: 2px solid #333;
+  border: 2px solid #5e3939;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -123,8 +120,16 @@ p {
   background-color: #00D8FF;
   color: rgb(0, 0, 0);
   margin-right: -20px;
+
+  will-change: filter;
+  transition: filter 500ms;
 }
 
+.header .title:hover {
+  filter: drop-shadow(0 0 1rem #64b4ffaa);
+  cursor: pointer;
+  color: white;
+}
 
 ul {
   padding: 0;
@@ -142,9 +147,12 @@ ul {
 }
 
 .form {
+  position: sticky;
+  top: 20px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  align-self: flex-start;
 }
 
 .form-section-recto, .form-section-verso {
@@ -182,11 +190,12 @@ h2 {
 }
 
 .business-card {
+  position: relative;
   width: 500px;
   height: 285px;
   perspective: 1000px;
   cursor: pointer;
-  margin: 40px auto;
+  margin: 0;
 }
 
 .card-inner {
@@ -194,7 +203,7 @@ h2 {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.8s;
+  transition: transform 0.8s ease-in-out;
 }
 
 .business-card.flipped .card-inner {
@@ -217,6 +226,50 @@ h2 {
   transform: rotateY(180deg);
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.buttons button, .form-section-recto button, .edit-btn {
+  appearance: none;
+  border:none;
+  background-color: #00d9ffaf;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.buttons button:hover, .form-section-recto button:hover {
+  background-color: #00788dbd;
+  cursor: pointer;
+  color: white;
+}
+
+.edit-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  position: absolute;
+  background-color: #00d9ffaf;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+
+  bottom: 400px;
+  align-self: center;
+  justify-self: center;
+  left: 500px;
+}
+
+.edit-btn:hover {
+  background-color: #00788dbd;
+  color:white;
+}
 
 
 @media (prefers-color-scheme: light) {

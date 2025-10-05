@@ -62,8 +62,8 @@ function App() {
   };
   
   const [cardData, setCardData] = useState(initial);
-
   const [face, setFace] = useState('recto'); //'recto', 'verso'
+  const [isEditing, setIsEditing] = useState(true);
 
 
   return (
@@ -96,111 +96,124 @@ function App() {
           />
         </div>
       </div>
-    </div>
 
- 
-       {/* <div className="form">
-          <div className="form-section-recto">
-          <h2>RECTO</h2>
-          <label>
-            Company Name:
-            <input
-              type="text"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-            />
-          </label>
-          <label>
-            Line:
-            <input
-              type="text"
-              value={line}
-              onChange={(e) => setLine(e.target.value)}
-            />
-          </label>
-          <label>
-            Logo:
-            <input
-              type="image"
-              value={logo}
-            />
-          </label>
-          </div>
-         
-          <div className="form-section-verso">
-          <h2>VERSO</h2>
-          <label>
-            Name:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
+      </div>
 
-          <label>
-            Last Name:
-            <input
-              type="text"
-              value={lastname}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </label>
+      {!isEditing && (
+      <button className="edit-btn" onClick={() => {
+        setIsEditing(true);                    // 📝 Active le mode édition
+        setFace('recto');                     // 🔄 Reviens au recto
+      }}>
+      ✏️ Edit
+      </button>
+      )}
 
-          <label>
-            Title:
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
+    {isEditing && (
+    <div className="form">
 
-          <label>
-            Phone:
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </label>
+    {face === 'recto' && (
+      <div className="form-section-recto">
+        <h2>RECTO</h2>
 
-          <label>
-            Mail:
-            <input
-              type="mail"
-              value={mail}
-              onChange={(e) => setMail(e.target.value)}
-            />
-          </label>
+        <label>
+          Company Name:
+          <input
+            type="text"
+            value={cardData.companyName}
+            onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
+          />
+        </label>
 
-          <label>
-            Website:
-            <input
-              type="url"
-              value={website}
-              onChange={(e) => setWebsite(e.target.value)}
-            />
-          </label>
+        <label>
+          Line:
+          <input
+            type="text"
+            value={cardData.line}
+            onChange={(e) => setCardData({ ...cardData, line: e.target.value })}
+          />
+        </label>
 
-          <label>
-            Address:
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </label>
+        <button onClick={() => setFace('verso')}>Next ➜</button>
+      </div>
+    )}
 
-          <label>
-            Logo:
-            <input
-              type="image"
-              value={logo}
-            />
-          </label>
-          </div>
-       </div> */}
+    {face === 'verso' && (
+      <div className="form-section-verso">
+        <h2>VERSO</h2>
+
+        <label>
+          Name:
+          <input
+            type="text"
+            value={cardData.name}
+            onChange={(e) => setCardData({ ...cardData, name: e.target.value })}
+          />
+        </label>
+
+        <label>
+          Last Name:
+          <input
+            type="text"
+            value={cardData.lastName}
+            onChange={(e) => setCardData({ ...cardData, lastName: e.target.value })}
+          />
+        </label>
+
+        <label>
+          Title:
+          <input
+            type="text"
+            value={cardData.title}
+            onChange={(e) => setCardData({ ...cardData, title: e.target.value })}
+          />
+        </label>
+
+        <label>
+          Phone:
+          <input
+            type="tel"
+            value={cardData.phone}
+            onChange={(e) => setCardData({ ...cardData, phone: e.target.value })}
+          />
+        </label>
+
+        <label>
+          Mail:
+          <input
+            type="mail"
+            value={cardData.mail}
+            onChange={(e) => setCardData({ ...cardData, mail: e.target.value })}
+          />
+        </label>
+
+        <label>
+          Website:
+          <input
+            type="url"
+            value={cardData.website}
+            onChange={(e) => setCardData({ ...cardData, website: e.target.value })}
+          />
+        </label>
+
+        <label>
+          Address:
+          <input
+            type="text"
+            value={cardData.address}
+            onChange={(e) => setCardData({ ...cardData, address: e.target.value })}
+          />
+        </label>
+
+        <div className="buttons">
+          <button onClick={() => setFace('recto')}>⬅ Prev</button>
+          <button onClick={() => {setIsEditing(false), setFace('recto')}}>✅ Submit</button>
+        </div>
+      </div>
+    )}
+
+  </div>
+    )}
+
 
     </div>
   )
