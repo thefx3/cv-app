@@ -4,10 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 
+
 function Recto( {CompanyName, Line, Logo}) {
 
   return (
-    <div className='recto'>
+    <div className='recto' >
       <div className="text-content">
         <h1>{CompanyName}</h1>
         <div className="bloc">
@@ -45,41 +46,61 @@ function Verso ({Name, LastName, Title, Phone, Mail, Website, Address, Logo}) {
 
 
 function App() {
-  const [companyName, setCompanyName] = useState("Fix Society")
-  const [line, setLine] = useState("Create. Build. Inspire")
+
+  const initial = {
+    companyName: "Fix Society",
+    line: "Create. Build. Inspire",
+    logo: logo,
+
+    name: "Francois",
+    lastName: "Pairault",
+    title: "Developper",
+    phone: "1 88 504-116",
+    mail: "ceo@fixsociety.com",
+    website: "fixsociety.com",
+    address: "7 av. Baker Street 5102 U.K",
+  };
   
-  const [name, setName] = useState("Francois")
-  const [lastname, setLastName] = useState("Pairault")
-  const [title, setTitle] = useState("Developper")
-  const [phone, setPhone] = useState("1 88 504-116")
-  const [mail, setMail] = useState("ceo@fixsociety.com")
-  const [website, setWebsite] = useState("fixsociety.com")
-  const [address, setAddress] = useState("7 av. Baker Street 5102 U.K")
+  const [cardData, setCardData] = useState(initial);
+
+  const [face, setFace] = useState('recto'); //'recto', 'verso'
+
 
   return (
+    
     <div className='app'>
 
+      <div 
+      className={`business-card ${face === 'verso' ? 'flipped' : ''}`}
+      onClick={() => setFace(face === 'recto' ? 'verso' : 'recto')}
+      >
 
-      <div className="business-card">
-        <Recto
-          CompanyName={companyName}
-          Line={line}
-          Logo={logo}
-        />
-        <Verso
-          Name={name}
-          LastName={lastname}
-          Title={title}
-          Phone={phone}
-          Mail={mail}
-          Website={website}
-          Address={address}
-          Logo={logo}
-        />
+      <div className="card-inner">
+        <div className="card-face card-front">
+          <Recto
+            CompanyName={cardData.companyName}
+            Line={cardData.line}
+            Logo={cardData.logo}
+          />
+        </div>
+        <div className="card-face card-back">
+          <Verso
+            Name={cardData.name}
+            LastName={cardData.lastName}
+            Title={cardData.title}
+            Phone={cardData.phone}
+            Mail={cardData.mail}
+            Website={cardData.website}
+            Address={cardData.address}
+            Logo={cardData.logo}
+          />
+        </div>
       </div>
+    </div>
 
-       <div className="form">
-         <div className="form-section-recto">
+ 
+       {/* <div className="form">
+          <div className="form-section-recto">
           <h2>RECTO</h2>
           <label>
             Company Name:
@@ -104,9 +125,9 @@ function App() {
               value={logo}
             />
           </label>
-               </div>
+          </div>
          
-               <div className="form-section-verso">
+          <div className="form-section-verso">
           <h2>VERSO</h2>
           <label>
             Name:
@@ -116,22 +137,61 @@ function App() {
               onChange={(e) => setName(e.target.value)}
             />
           </label>
+
           <label>
             Last Name:
             <input
               type="text"
               value={lastname}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </label>
+
           <label>
             Title:
             <input
               type="text"
               value={title}
-              onChange={(e) => setLine(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </label>
+
+          <label>
+            Phone:
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Mail:
+            <input
+              type="mail"
+              value={mail}
+              onChange={(e) => setMail(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Website:
+            <input
+              type="url"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Address:
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </label>
+
           <label>
             Logo:
             <input
@@ -139,8 +199,8 @@ function App() {
               value={logo}
             />
           </label>
-               </div>
-       </div>
+          </div>
+       </div> */}
 
     </div>
   )
