@@ -1,16 +1,26 @@
+
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-primary: #00252c;
+  --color-secondary: #FF61A6;
+  --color-accent: #FFBF00;
+  --color-accent:#8f7a03cb;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-link: #b4dbff;
 }
 
 
@@ -38,14 +48,14 @@ body {
   aspect-ratio: 350/200;
   width: 500px;
   border-radius: 1px;
-  border: 2px solid #5e3939;
+  border: 2px solid var(--color-accent);
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  background: var(--color-primary);
+  box-shadow: 0 4px 10px var(--color-accent);
 }
 
 .text-content {
@@ -67,9 +77,9 @@ body {
 }
 
 .separator {
-  width: 35%;
+  width: 30%;
   height: 1px;
-  background-color: #333;
+  background-color: var(--color-accent);
   margin: 10px 0;
   align-self: center;
 }
@@ -89,8 +99,8 @@ h1 {
 
 p {
   margin: 0 15px;
-  color: #555;
-  font-size: 1.25rem;
+  color: var(--color-link);
+  font-size: 1rem;
 }
 
 /* Verso */ 
@@ -108,8 +118,8 @@ p {
 
 .header .fullName {
   margin: 0;
-  color: black;
   font-size: 1.5rem;
+  color: var(--color-accent);
 }
 
 .header .title {
@@ -117,8 +127,8 @@ p {
   margin: 0;
   padding: 5px 20px;
   padding-right: 50px;
-  background-color: #00D8FF;
-  color: rgb(0, 0, 0);
+  background-color: var(--color-accent);
+  color: var(--color-link);
   margin-right: -20px;
 
   will-change: filter;
@@ -159,7 +169,6 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 25px;
@@ -196,6 +205,7 @@ h2 {
   perspective: 1000px;
   cursor: pointer;
   margin: 0;
+  color: var(--color-accent);
 }
 
 .card-inner {
@@ -263,7 +273,6 @@ h2 {
   bottom: 400px;
   align-self: center;
   justify-self: center;
-  left: 500px;
 }
 
 .edit-btn:hover {
