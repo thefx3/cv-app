@@ -63,6 +63,7 @@ function App() {
   
   const [cardData, setCardData] = useState(initial);
   const [face, setFace] = useState('recto'); //'recto', 'verso'
+  const [tempData, setTempData] = useState(initial);
   const [isEditing, setIsEditing] = useState(true);
 
 
@@ -119,8 +120,8 @@ function App() {
           Company Name:
           <input
             type="text"
-            value={cardData.companyName}
-            onChange={(e) => setCardData({ ...cardData, companyName: e.target.value })}
+            value={tempData.companyName}
+            onChange={(e) => setTempData({ ...tempData, companyName: e.target.value })}
           />
         </label>
 
@@ -128,8 +129,8 @@ function App() {
           Line:
           <input
             type="text"
-            value={cardData.line}
-            onChange={(e) => setCardData({ ...cardData, line: e.target.value })}
+            value={tempData.line}
+            onChange={(e) => setTempData({ ...tempData, line: e.target.value })}
           />
         </label>
 
@@ -145,8 +146,8 @@ function App() {
           Name:
           <input
             type="text"
-            value={cardData.name}
-            onChange={(e) => setCardData({ ...cardData, name: e.target.value })}
+            value={tempData.name}
+            onChange={(e) => setTempData({ ...tempData, name: e.target.value })}
           />
         </label>
 
@@ -154,8 +155,8 @@ function App() {
           Last Name:
           <input
             type="text"
-            value={cardData.lastName}
-            onChange={(e) => setCardData({ ...cardData, lastName: e.target.value })}
+            value={tempData.lastName}
+            onChange={(e) => setTempData({ ...tempData, lastName: e.target.value })}
           />
         </label>
 
@@ -163,8 +164,8 @@ function App() {
           Title:
           <input
             type="text"
-            value={cardData.title}
-            onChange={(e) => setCardData({ ...cardData, title: e.target.value })}
+            value={tempData.title}
+            onChange={(e) => setTempData({ ...tempData, title: e.target.value })}
           />
         </label>
 
@@ -172,8 +173,8 @@ function App() {
           Phone:
           <input
             type="tel"
-            value={cardData.phone}
-            onChange={(e) => setCardData({ ...cardData, phone: e.target.value })}
+            value={tempData.phone}
+            onChange={(e) => setTempData({ ...tempData, phone: e.target.value })}
           />
         </label>
 
@@ -181,8 +182,8 @@ function App() {
           Mail:
           <input
             type="mail"
-            value={cardData.mail}
-            onChange={(e) => setCardData({ ...cardData, mail: e.target.value })}
+            value={tempData.mail}
+            onChange={(e) => setTempData({ ...tempData, mail: e.target.value })}
           />
         </label>
 
@@ -190,8 +191,8 @@ function App() {
           Website:
           <input
             type="url"
-            value={cardData.website}
-            onChange={(e) => setCardData({ ...cardData, website: e.target.value })}
+            value={tempData.website}
+            onChange={(e) => setTempData({ ...tempData, website: e.target.value })}
           />
         </label>
 
@@ -199,14 +200,14 @@ function App() {
           Address:
           <input
             type="text"
-            value={cardData.address}
-            onChange={(e) => setCardData({ ...cardData, address: e.target.value })}
+            value={tempData.address}
+            onChange={(e) => setTempData({ ...tempData, address: e.target.value })}
           />
         </label>
 
         <div className="buttons">
           <button onClick={() => setFace('recto')}>⬅ Prev</button>
-          <button onClick={() => {setIsEditing(false), setFace('recto')}}>✅ Submit</button>
+          <button onClick={() => {setCardData(tempData);setIsEditing(false); setFace('recto')}}>✅ Submit</button>
         </div>
       </div>
     )}
